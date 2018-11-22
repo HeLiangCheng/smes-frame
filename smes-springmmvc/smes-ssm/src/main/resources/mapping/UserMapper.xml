@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hlc.styd.smes.web.dao.IUserDao">
+
+    <resultMap id="BaseResultMap" type="com.hlc.styd.smes.web.entity.User">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="gander" jdbcType="VARCHAR" property="gander" />
+        <result column="birthday" jdbcType="DATE" property="birthday" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, name, username,password,gander,birthday
+    </sql>
+
+    <insert id="save" parameterType="com.hlc.styd.smes.web.entity.User">
+        insert into user(name,username,password,gander,birthday)
+        VALUES (#{name},#{username},#{password},#{gander},#{birthday})
+    </insert>
+
+    <update id="update" parameterType="com.hlc.styd.smes.web.entity.User">
+        UPDATE user set name =#{name}  username=#{username} password=#{password} gander=#{gander} birthday= #{birthday}
+        where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        DELETE from user where id = #{id}
+    </delete>
+
+    <select id="selectByKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select * from user where id = #{id}
+    </select>
+
+    <select id="selectList" parameterType="com.hlc.styd.smes.web.entity.User" resultMap="BaseResultMap">
+        select * from user
+        <where>
+            <if test="name!=null">
+               and name = #{name}
+            </if>
+            <if test="username!=null">
+                and username = #{username}
+            </if>
+            <if test="gander!=null">
+                and gander = #{gander}
+            </if>
+            <if test="birthday!=null">
+                and birthday = #{birthday}
+            </if>
+        </where>
+    </select>
+
+    <select id="count" parameterType="com.hlc.styd.smes.web.entity.User" resultType="java.lang.Integer">
+        select count(*) from user
+        <where>
+            <if test="name!=null">
+                and name = #{name}
+            </if>
+            <if test="username!=null">
+                and username = #{username}
+            </if>
+            <if test="gander!=null">
+                and gander = #{gander}
+            </if>
+            <if test="birthday!=null">
+                and birthday = #{birthday}
+            </if>
+        </where>
+    </select>
+</mapper>

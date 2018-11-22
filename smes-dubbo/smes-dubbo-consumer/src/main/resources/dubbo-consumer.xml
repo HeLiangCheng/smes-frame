@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://code.alibabatech.com/schema/dubbo
+            http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="${dubbo.application.name}" />
+
+    <dubbo:registry address="${dubbo.registry.address}"  protocol="zookeeper" timeout="100000"/>
+
+    <!-- 用dubbo协议在20883端口暴露服务 -->
+    <dubbo:protocol id="dubbo1" name="dubbo" port="${dubbo.protocol.port}" threads="200"/>
+
+
+    <!--dubbo引用-->
+    <dubbo:reference interface="com.hlc.styd.smes.api.service.UserService" ref="userService"  protocol="dubbo1" />
+
+
+</beans>

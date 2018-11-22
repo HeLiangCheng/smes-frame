@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.hlc.styd.smes.frame</groupId>
+    <artifactId>smes-dubbo</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <description>dubbo开发SOA应用架构</description>
+
+    <modules>
+        <module>smes-dubbo-api</module>
+        <module>smes-dubbo-provider</module>
+        <module>smes-dubbo-consumer</module>
+    </modules>
+
+    <distributionManagement>
+        <repository>
+            <id>rcsRelases</id>
+            <name>maven-releases</name>
+            <url>http://192.168.146.4:8081/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
+
+</project>

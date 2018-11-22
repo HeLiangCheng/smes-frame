@@ -1,0 +1,16 @@
+1. userservice不能创建bean
+   com.alibaba.dubbo:2.8.4 在jdk 1.7.0_79下可以正常运行，在jdk 1.7.0.80上运行不了，会报以上错误,最好使用jdk1.8以上版本
+
+2.  找不到com.hlc.styd.smes.api.* 程序包
+    idea 项目间引用，编译时找不到包，检查包引用的正确性，如果无误则清空idea缓存文件
+
+3. MalformedByteSequenceException:3 字节的 UTF-8 序列的字节3无效
+    检查xml的头文件和右键属性里面的编码是否一致
+    尝试在pom.xml加入如下配置 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+4. dubbo服务连接Zookeeper超时
+    检查Zookeeper暴露的client端口是否联通，
+        window  telnet IP+端口 (telnet 192.168.146.4 2181)
+        linux   telnet  (telnet 192.168.146.4 2181)
+    延长超时时间，配置timeout="100000"
+     <dubbo:registry address="${dubbo.registry.address}"  protocol="zookeeper" timeout="100000"/>
