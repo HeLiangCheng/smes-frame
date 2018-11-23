@@ -1,0 +1,20 @@
+第一阶段：spring profile 进行配置文件管理
+    1. 添加maven配置
+
+    2. 创建不同环境的配置
+
+    3.指定的配置文件
+        打包时指定： mvn clean package -P test
+        运行时指定： -Dspring.profiles.active="test"
+
+    优点： 简单，区分不同环境配置文件统一管理，适用于小型团队快速迭代开发
+    缺点： 所有配置对开发人员可见，安全性低，容易发生误操作
+
+
+第二阶段： 使用脚本，在CI服务器打包时，动态替换配置文件
+
+
+第三阶段：  使用集中的配置管理服务器
+            disconf
+            apoll
+            springcloud config

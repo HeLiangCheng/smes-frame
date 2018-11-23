@@ -4,6 +4,7 @@ package com.hlc.styd.smes.consumer.controller;
 import com.hlc.styd.smes.api.dto.UserDto;
 import com.hlc.styd.smes.api.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Value("${app.evn}")
+    private String appevn;
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView getUser(String name) {
         UserDto user = new UserDto();
@@ -43,6 +47,13 @@ public class UserController {
         user.setName(name);
         List<UserDto> users = userService.findByUser(user);
         return users;
+    }
+
+
+    @RequestMapping(value = "/conf", method = RequestMethod.GET)
+    @ResponseBody
+    public String getConfigByRest() {
+        return appevn;
     }
 
 }

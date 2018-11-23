@@ -36,4 +36,19 @@
     <!--引入dubbo rest-->
     <import resource="dubbo-rest.xml" />
 
+    <!-- 开发环境配置文件 -->
+    <beans profile="dev">
+        <context:property-placeholder location="classpath:app-dev.properties" />
+    </beans>
+
+    <!-- 测试环境配置文件 -->
+    <beans profile="test">
+        <context:property-placeholder location="classpath:app-test.properties" />
+    </beans>
+
+    <!-- 生产环境配置文件 -->
+    <beans profile="pro">
+        <context:property-placeholder location="classpath:app-pro.properties" />
+    </beans>
+
 </beans>

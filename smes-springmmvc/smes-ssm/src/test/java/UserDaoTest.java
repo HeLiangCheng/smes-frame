@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -34,6 +36,18 @@ public class UserDaoTest {
         User user = null;
         int num = userDao.count(user);
         System.out.println("数据总数：" + num);
+    }
+
+    @Test
+    public void test3(){
+        Date now = new Date();
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyyMMdd");
+        try {
+            now = simpleDateFormat.parse("99991231");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        System.out.println(now);
     }
 
 }

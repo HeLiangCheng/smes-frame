@@ -2,6 +2,7 @@ package com.hlc.styd.smes.provider;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Scanner;
@@ -11,6 +12,7 @@ import java.util.Scanner;
  * Dubbo启动类
  */
 public class DubboMain {
+
     private static Logger logger = LoggerFactory.getLogger("DubboMain");
 
     public static void main(String[] args) {
