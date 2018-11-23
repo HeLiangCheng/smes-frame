@@ -14,3 +14,22 @@
         linux   telnet  (telnet 192.168.146.4 2181)
     延长超时时间，配置timeout="100000"
      <dubbo:registry address="${dubbo.registry.address}"  protocol="zookeeper" timeout="100000"/>
+
+5. SpringServletContainerInitializer cannot be cast to javax.servlet.ServletContainerInitializer 错误信息
+    检查项目中是否引用 javax.servlet.javax.servlet-api       javax.javaee-api将其排除
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>dubbo</artifactId>
+        <version>2.8.4</version>
+        <exclusions>
+            <exclusion>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+            </exclusion>
+            <exclusion>
+                <artifactId>spring</artifactId>
+                <groupId>org.springframework</groupId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+
