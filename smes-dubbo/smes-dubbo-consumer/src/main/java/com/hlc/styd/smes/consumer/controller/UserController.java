@@ -26,9 +26,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @Value("${app.evn}")
-    private String appevn;
-
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView getUser(String name) {
         UserDto user = new UserDto();
@@ -47,13 +44,6 @@ public class UserController {
         user.setName(name);
         List<UserDto> users = userService.findByUser(user);
         return users;
-    }
-
-
-    @RequestMapping(value = "/conf", method = RequestMethod.GET)
-    @ResponseBody
-    public String getConfigByRest() {
-        return appevn;
     }
 
 }

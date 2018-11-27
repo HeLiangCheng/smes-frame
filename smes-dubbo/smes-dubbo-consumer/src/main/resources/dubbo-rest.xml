@@ -10,4 +10,6 @@
 
     <dubbo:service interface="com.hlc.styd.smes.api.rest.UserRestService"  ref="userRestService"  protocol="rest" />
 
+    <dubbo:service interface="com.hlc.styd.smes.api.rest.MongoCompanyRestService"  ref="companyRestService"  protocol="rest" />
+
 </beans>

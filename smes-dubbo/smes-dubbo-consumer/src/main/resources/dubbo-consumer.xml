@@ -16,5 +16,8 @@
     <!--dubbo引用-->
     <dubbo:reference interface="com.hlc.styd.smes.api.service.UserService" id="userService" timeout="10000" check="false"  cluster="failover" retries="2" loadbalance="random" />
 
+    <dubbo:reference interface="com.hlc.styd.smes.api.service.MongoCompanyService" id="mongoCompanyService" timeout="10000" check="false"  cluster="failover" retries="2" loadbalance="random" />
+
+
 
 </beans>

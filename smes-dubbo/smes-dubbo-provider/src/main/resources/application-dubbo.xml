@@ -15,5 +15,6 @@
 
     <!--dubbo 服务声明-->
     <dubbo:service interface="com.hlc.styd.smes.api.service.UserService" ref="userService"  protocol="dubbo1" />
+    <dubbo:service interface="com.hlc.styd.smes.api.service.MongoCompanyService" ref="mongoCompanyService" protocol="dubbo1"/>
 
 </beans>

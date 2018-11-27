@@ -18,6 +18,7 @@
             <list>
                 <value>classpath:jdbc.properties</value>
                 <value>classpath:dubbo.properties</value>
+                <value>classpath:mongo.properties</value>
             </list>
         </property>
     </bean>

@@ -12,10 +12,12 @@ import java.util.Date;
 @Getter
 @Setter
 public class UserDto implements Serializable{
+
     private Integer id;
     private String name;
     private String username;
     private String password;
     private String gander;
     private Date birthday;
+
 }

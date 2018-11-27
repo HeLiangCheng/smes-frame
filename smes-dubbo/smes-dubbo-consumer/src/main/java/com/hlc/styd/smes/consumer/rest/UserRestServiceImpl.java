@@ -34,6 +34,21 @@ public class UserRestServiceImpl implements UserRestService {
         return userService.findById(id);
     }
 
+    /**
+     * 接受json字符串
+     {
+         "name":"1234",
+         "username":"tom",
+         "password":"123456",
+         "gander":"男"，
+         "birthday":"1989-07-12"
+     }
+     如果字段不对应则可以使用 JsonProperty进行映射
+     @JsonProperty(value = "user_name")
+     private String username;
+
+     * @param user
+     */
     @Path("/user")
     @POST
     public void insertUser(@RequestBody UserDto user) {
