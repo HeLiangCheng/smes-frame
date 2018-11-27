@@ -181,6 +181,12 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!--集成oauth2权限认证-->
+        <dependency>
+            <groupId>com.hlc.styd.smes.frame</groupId>
+            <artifactId>smes-oauth2</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 
     </dependencies>
 
