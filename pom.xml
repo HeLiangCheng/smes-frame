@@ -11,6 +11,7 @@
         <module>smes-dubbo</module>
         <module>smes-ldap</module>
         <module>smes-oauth2</module>
+        <module>smes-springboot</module>
     </modules>
     <packaging>pom</packaging>
     <description>中小型企业架构实践</description>
