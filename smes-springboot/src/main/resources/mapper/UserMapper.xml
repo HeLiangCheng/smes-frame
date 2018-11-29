@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hlc.styd.smes.frame.sb.dao.mybatis.UserMapper">
+  <resultMap id="BaseResultMap" type="com.hlc.styd.smes.frame.sb.entity.Db_User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="gander" jdbcType="VARCHAR" property="gander" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, name, username, password, gander, birthday
+  </sql>
+
+  <select id="selectByKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteByKey" parameterType="java.lang.Integer">
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.hlc.styd.smes.frame.sb.entity.Db_User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="gander != null">
+        gander,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="gander != null">
+        #{gander,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="update" parameterType="com.hlc.styd.smes.frame.sb.entity.Db_User">
+    update user
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="gander != null">
+        gander = #{gander,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="count" parameterType="com.hlc.styd.smes.frame.sb.entity.Db_User" resultType="java.lang.Integer">
+    select count(*) from  user
+    <where>
+      <if test="name != null">
+        and name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="username != null">
+        and username = #{username,jdbcType=VARCHAR}
+      </if>
+      <if test="gander != null">
+        and gander = #{gander,jdbcType=VARCHAR}
+      </if>
+      <if test="birthday != null">
+        and  birthday = #{birthday,jdbcType=DATE}
+      </if>
+    </where>
+  </select>
+
+  <select id="selectAll" resultType="com.hlc.styd.smes.frame.sb.entity.Db_User">
+    select * from  user
+  </select>
+
+  <select id="selectByPage" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select * from  user
+    <where>
+      <if test="name != null">
+        and name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="username != null">
+        and username = #{username,jdbcType=VARCHAR}
+      </if>
+      <if test="gander != null">
+        and gander = #{gander,jdbcType=VARCHAR}
+      </if>
+      <if test="birthday != null">
+        and  birthday = #{birthday,jdbcType=DATE}
+      </if>
+    </where>
+    ORDER by id limit #{pageindex},#{pagesize}
+  </select>
+</mapper>

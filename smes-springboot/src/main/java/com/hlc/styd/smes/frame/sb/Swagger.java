@@ -1,4 +1,4 @@
-package com.hlc.styd.smes.frame.sb.config;
+package com.hlc.styd.smes.frame.sb;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
