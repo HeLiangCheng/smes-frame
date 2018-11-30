@@ -44,3 +44,10 @@ LEVEL：TRACE INFO ERROR WARN FATAL OFF
 			<artifactId>spring-boot-starter-log4j</artifactId>
 			<version>1.3.8.RELEASE</version>
 		</dependency>
+		
+		
+###三、使用log4j将日志写入mongdb数据库
+    1.引入所需的jar包
+    2.在application.properties程序包中配置mongdb数据库信息
+    3.配置mongdb信息读取类 MongoAppender
+    4.配置AOP切面
