@@ -1,15 +1,11 @@
-package com.hlc.styd.smes.frame.sb.dao;
+package com.hlc.styd.smes.frame.sb.test;
 
-import com.hlc.styd.smes.frame.sb.dao.jpa.JpaUserDao;
-import com.hlc.styd.smes.frame.sb.entity.JPA_User;
+import com.hlc.styd.smes.frame.sb.dao.jdbc.IUserDao;
+import com.hlc.styd.smes.frame.sb.entity.Db_User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
@@ -20,14 +16,14 @@ import java.util.List;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class JpaUserTest {
+public class JDBCUserTest {
 
     @Autowired
-    private JpaUserDao userDao;
+    private IUserDao userDao;
 
     @Test
     public void userlist(){
-        List<JPA_User> userList = userDao.findAll();
+        List<Db_User> userList = userDao.findAll();
         userList.forEach(t->{
             System.out.println(t.toString());
         });
@@ -35,7 +31,7 @@ public class JpaUserTest {
 
     @Test
     public void useradd() {
-        JPA_User user = new JPA_User();
+        Db_User user = new Db_User();
         user.setName("test1");
         user.setUsername("test1");
         user.setGander("男");
@@ -44,18 +40,13 @@ public class JpaUserTest {
         userDao.save(user);
     }
 
+
     @Test
-    public void userbypage() {
-        int page = 0;
-        int size = 10;
-        Pageable pageable = new PageRequest(page, size, Sort.Direction.ASC, "id");
-        Page<JPA_User> userList = userDao.findAll(pageable);
-        userList.forEach(t -> {
+    public void userListByPage(){
+        List<Db_User> userList = userDao.findByPage(1,5,null);
+        userList.forEach(t->{
             System.out.println(t.toString());
         });
     }
 
-
-
 }
-

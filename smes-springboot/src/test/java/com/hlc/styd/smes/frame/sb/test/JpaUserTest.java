@@ -1,11 +1,15 @@
-package com.hlc.styd.smes.frame.sb.dao;
+package com.hlc.styd.smes.frame.sb.test;
 
-import com.hlc.styd.smes.frame.sb.dao.jdbc.IUserDao;
-import com.hlc.styd.smes.frame.sb.entity.Db_User;
+import com.hlc.styd.smes.frame.sb.dao.jpa.JpaUserDao;
+import com.hlc.styd.smes.frame.sb.entity.JPA_User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
@@ -16,14 +20,14 @@ import java.util.List;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class JDBCUserTest {
+public class JpaUserTest {
 
     @Autowired
-    private IUserDao userDao;
+    private JpaUserDao userDao;
 
     @Test
     public void userlist(){
-        List<Db_User> userList = userDao.findAll();
+        List<JPA_User> userList = userDao.findAll();
         userList.forEach(t->{
             System.out.println(t.toString());
         });
@@ -31,7 +35,7 @@ public class JDBCUserTest {
 
     @Test
     public void useradd() {
-        Db_User user = new Db_User();
+        JPA_User user = new JPA_User();
         user.setName("test1");
         user.setUsername("test1");
         user.setGander("男");
@@ -40,13 +44,18 @@ public class JDBCUserTest {
         userDao.save(user);
     }
 
-
     @Test
-    public void userListByPage(){
-        List<Db_User> userList = userDao.findByPage(1,5,null);
-        userList.forEach(t->{
+    public void userbypage() {
+        int page = 0;
+        int size = 10;
+        Pageable pageable = new PageRequest(page, size, Sort.Direction.ASC, "id");
+        Page<JPA_User> userList = userDao.findAll(pageable);
+        userList.forEach(t -> {
             System.out.println(t.toString());
         });
     }
 
+
+
 }
+

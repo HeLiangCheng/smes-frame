@@ -1,4 +1,4 @@
-package com.hlc.styd.smes.frame.sb.dao;
+package com.hlc.styd.smes.frame.sb.test;
 
 import com.hlc.styd.smes.frame.sb.multidatasource.dto.CompanyDto;
 import com.hlc.styd.smes.frame.sb.service.ICompanyService;

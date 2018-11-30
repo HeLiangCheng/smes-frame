@@ -1,4 +1,4 @@
-package com.hlc.styd.smes.frame.sb.dao;
+package com.hlc.styd.smes.frame.sb.test;
 
 import com.hlc.styd.smes.frame.sb.dao.mybatis.User2Mapper;
 import com.hlc.styd.smes.frame.sb.entity.Db_User;

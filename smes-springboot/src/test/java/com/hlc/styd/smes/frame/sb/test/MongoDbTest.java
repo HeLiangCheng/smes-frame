@@ -1,7 +1,8 @@
-package com.hlc.styd.smes.frame.sb.dao;
+package com.hlc.styd.smes.frame.sb.test;
 
 import com.hlc.styd.smes.frame.sb.entity.Db_User;
-import com.hlc.styd.smes.frame.sb.redis.RedisUserService;
+import com.hlc.styd.smes.frame.sb.mongodb.UserMongoRepository;
+import org.apache.catalina.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,19 +10,20 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Liang on 2018/11/29.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class RedisUserServiceTest {
+public class MongoDbTest {
 
     @Autowired
-    private RedisUserService redisUserService;
+    private UserMongoRepository userMongoRepository;
 
     @Test
-    public void  test(){
+    public void test1() {
         Db_User user = new Db_User();
         user.setId(123);
         user.setName("redis");
@@ -29,15 +31,17 @@ public class RedisUserServiceTest {
         user.setPassword("123456");
         user.setBirthday(new Date());
         user.setGander("男");
-        redisUserService.save(user);
+        userMongoRepository.save(user);
     }
 
 
     @Test
-    public void  test2(){
-        Db_User user = redisUserService.get("redis_db_user");
-        System.out.println(user.toString());
+    public void test2() {
+        List<Db_User> userlist = userMongoRepository.findAll();
+        userlist.forEach(t->{
+            System.out.println(t.toString());
+        });
     }
 
-}
 
+}
